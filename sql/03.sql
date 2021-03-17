@@ -8,15 +8,16 @@
  */
 
 SELECT DISTINCT first_name || ' ' || last_name AS "Actor Name"
-FROM (
-	SELECT first_name, last_name, actor_id
-	FROM actor
-	INNER JOIN film_actor USING(actor_id)
-	INNER JOIN film_category USING(film_id)
-	WHERE category_id != 11 -- 11 is the category_id for Horror
-) t
+FROM actor
 INNER JOIN film_actor USING(actor_id)
 INNER JOIN film_category USING(film_id)
 WHERE category_id = 3 -- 3 is the category_id for Children
+AND actor_id NOT IN (
+	SELECT actor_id
+	FROM actor
+	INNER JOIN film_actor USING(actor_id)
+	INNER JOIN film_category USING(film_id)
+	WHERE category_id = 11 -- 11 is the category_id for Horror
+)
 ORDER BY "Actor Name";
 

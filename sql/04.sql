@@ -7,9 +7,8 @@
  */
 
 WITH relevant_actors AS (
-	SELECT DISTINCT actor_id
-	FROM actor
-	INNER JOIN film_actor USING(actor_id)
+	SELECT actor_id
+	FROM film_actor
 	WHERE film_id = 21 -- 21 is the film_id of AMERICAN CIRCUS
 )
 
