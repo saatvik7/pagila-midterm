@@ -11,7 +11,7 @@ CREATE TABLE project (
     target_id INTEGER NOT NULL,
     project_id INTEGER NOT NULL UNIQUE,
     action SMALLINT NOT NULL,
-    target_type VARCHAR(2) NOT NULL,
     title VARCHAR(256),
     data TEXT
+    target_type VARCHAR(2) NOT NULL,
 );
